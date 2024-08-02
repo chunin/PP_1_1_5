@@ -6,7 +6,7 @@ import jm.task.core.jdbc.util.Util;
 import java.sql.SQLException;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args){
         // реализуйте алгоритм здесь
         Util.getConnection();
         UserDaoJDBCImpl userDao = new UserDaoJDBCImpl();
