@@ -1,11 +1,9 @@
 package jm.task.core.jdbc.dao;
 
 import jm.task.core.jdbc.model.User;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
 import static jm.task.core.jdbc.util.Util.getConnection;
 
 public class UserDaoJDBCImpl implements UserDao {
@@ -15,7 +13,6 @@ public class UserDaoJDBCImpl implements UserDao {
     private String sql;
 
     public UserDaoJDBCImpl() {
-
     }
 
     @Override
@@ -48,7 +45,6 @@ public class UserDaoJDBCImpl implements UserDao {
 
         } catch (SQLException e) {
             e.printStackTrace();
-
         }
     }
 
@@ -61,7 +57,6 @@ public class UserDaoJDBCImpl implements UserDao {
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, lastName);
             preparedStatement.setLong(3, age);
-
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -71,15 +66,12 @@ public class UserDaoJDBCImpl implements UserDao {
 
     @Override
     public void removeUserById(long id) {
-
         sql = "DELETE FROM user where ID = " + id;
-
         try (Connection connection = getConnection()) {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-
         }
     }
 
@@ -95,12 +87,10 @@ public class UserDaoJDBCImpl implements UserDao {
 
             while (resultSet.next()) {
                 User user = new User();
-
                 user.setId(resultSet.getLong("ID"));
                 user.setName(resultSet.getString("NAME"));
                 user.setLastName(resultSet.getString("lastName"));
                 user.setAge(resultSet.getByte("AGE"));
-
                 userList.add(user);
             }
         } catch (SQLException e) {
@@ -117,11 +107,8 @@ public class UserDaoJDBCImpl implements UserDao {
         try (Connection connection = getConnection()) {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.executeUpdate();
-
-
         } catch (SQLException e) {
             e.printStackTrace();
-
         }
     }
 }
